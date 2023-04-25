@@ -1,0 +1,60 @@
+<!-- ZADANIE 1 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Figury geometryczne</title>
+</head>
+
+<body>
+
+<script>
+class Prostokat
+{
+    constructor(wysokosc, szerokosc, nazwa){
+        this.wysokosc = wysokosc;
+        this.szerokosc = szerokosc;
+        this.nazwa = nazwa;
+    }
+
+    obliczObwod() {
+        return 2* (this.szerokosc + this.wysokosc);
+    }
+
+    obliczPole() {
+        return (this.szerokosc + this.wysokosc);
+    }
+    static porownajPola(prostokat1, prostkat2) {
+        const pole1 = prostokat1.obliczPole();
+        const pole2 = prostkoat2.obliczPole();
+
+        if (pole1>pole2) {
+            return prostokat1;}
+            else if (pole2>pole1) {
+                return prostokat2;
+            }
+
+        }
+
+wypisz() {
+    console.log('Wysokośc to: ${this.wysokosc}');
+    console.log('Szerokosc to: ' + this.szerokosc);
+    console.log('Nazwa to: ' + this.nazwa);
+    }
+}
+const Pierwszy = new Prostokat('20', '40','Pierwszy');
+Pierwszy.wypisz();
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
