@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Javascript</title>
+</head>
+<body>
+    <h1>Kalkulator</h1>
+  
+    <h2>Wyniki:</h2>
+    <div id="results"></div>
+    <h1>Obliczanie pola trójkąta</h1>
+
+    <label for="a">Długość boku a:</label>
+    <input type="number" id="a">
+    <br>
+    <label for="b">Długość boku b:</label>
+    <input type="number" id="b">
+    <br>
+    <label for="c">Długość boku c:</label>
+    <input type="number" id="c">
+    <br>
+    <button onclick="obliczPole()">Oblicz</button>
+    <br>
+    <p id="wynik"></p>
+
+    <h1>Losowanie liczby</h1>
+    <script>
+
+        //Zadanie 1
+
+      var liczba1 = 20;
+      var liczba2 = 10;
+  
+      // Dodawanie
+      var addition = liczba1 + liczba2;
+      console.log("Dodawanie:", addition);
+      document.getElementById("results").innerHTML = "Dodawanie: " + addition + "<br>";
+  
+      // Odejmowanie
+      var subtraction = liczba1 - liczba2;
+      console.log("Odejmowanie:", subtraction);
+      document.getElementById("results").innerHTML += "Odejmowanie: " + subtraction + "<br>";
+  
+      // Mnożenie
+      var multiplication = liczba1 * liczba2;
+      console.log("Mnożenie:", multiplication);
+      document.getElementById("results").innerHTML += "Mnożenie: " + multiplication + "<br>";
+  
+      // Dzielenie
+      var division = liczba1 / liczba2;
+      console.log("Dzielenie:", division);
+      document.getElementById("results").innerHTML += "Dzielenie: " + division + "<br>";
+
+        //Zadanie 2
+        function obliczPoleTrojkata(a, b, c) {
+      var p = (a + b + c) / 2;
+      var pole = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+      return pole;
+    }
+
+    function obliczPole() {
+      var aInput = document.getElementById("a");
+      var bInput = document.getElementById("b");
+      var cInput = document.getElementById("c");
+      var wynikElement = document.getElementById("wynik");
+
+      var a = Number(aInput.value);
+      var b = Number(bInput.value);
+      var c = Number(cInput.value);
+
+      var poleTrojkata = obliczPoleTrojkata(a, b, c);
+      wynikElement.textContent = "Pole trójkąta wynosi: " + poleTrojkata;
+    }
+
+        //Zadanie 3
+        var randomNumber = Math.ceil(Math.random() * 10);
+    var userNumber = parseInt(prompt("Zgadnij liczbę między 1 a 10:"));
+    var resultElement = document.createElement("p"); //przypisujemy wylosowaną wartośc do nowopowstałego <p>
+    
+    if (userNumber === randomNumber) {
+      resultElement.textContent = "Dobra robota!";
+    } else {
+      resultElement.textContent = "Niestety, nie jest to poprawna liczba. Wylosowana liczba to: " + randomNumber;
+    }
+    
+    document.body.appendChild(resultElement);
+
+    function najwiekszyWspolnyDzielnik(a, b) {
+  // Zamieniamy liczby na wartości bezwzględne
+  a = Math.abs(a);
+  b = Math.abs(b);
+
+  // Wykonujemy algorytm Euklidesa
+  while (b !== 0) {
+    var temp = b;
+    b = a % b;
+    a = temp;
+  }
+
+  // Zwracamy wynik
+  return a;
+}
+
+// Przykładowe użycie
+var liczba1 = 84;
+var liczba2 = 18;
+var nwd = najwiekszyWspolnyDzielnik(liczba1, liczba2);
+
+console.log("Największy wspólny dzielnik liczb " + liczba1 + " i " + liczba2 + " wynosi: " + nwd);
+    </script>
+  </body>
+  </html>
