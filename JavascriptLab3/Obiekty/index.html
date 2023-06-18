@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obiekty</title>
+</head>
+<body>
+
+    <h1>Student Info</h1>
+
+    <div>
+      <label for="name">Imię:</label>
+      <input type="text" id="name">
+    </div>
+  
+    <div>
+      <label for="surname">Nazwisko:</label>
+      <input type="text" id="surname">
+    </div>
+  
+    <div>
+      <label for="age">Wiek:</label>
+      <input type="number" id="age">
+    </div>
+  
+    <button onclick="addStudent()">Dodaj studenta</button>
+  
+    <h2>Dane studenta:</h2>
+    <div id="studentData"></div>
+    <h1 id="clock"></h1>
+    <script>
+
+        //Zadanie 6
+
+        var student1 = {};
+        var student2 = {};
+        var student3 = {};
+
+        //Dodanie właściwości:
+
+        student1.name = "Adam";
+        student1.lname = "Nowak";
+        student1.age = 21;
+
+        student2.name = "Tomasz";
+        student2.lname = "Polak";
+        student2.age = 37;
+
+        student3.name = "Aleksandra";
+        student3.lname = "Kowalska";
+        student3.age = 25;
+
+        console.log("Student 1:");
+        console.log("Imię: " , student1.name);
+        console.log("Nazwisko: ", student1.lname);
+        console.log("Wiek: " , student1.age);
+
+        console.log("Student 2:");
+        console.log("Imię: " , student2.name);
+        console.log("Nazwisko: ", student2.lname);
+        console.log("Wiek: " , student2.age);
+
+        console.log("Student 3:");
+        console.log("Imię: " , student3.name);
+        console.log("Nazwisko: ", student3.lname);
+        console.log("Wiek: " , student3.age);
+
+        //Zadanie 7
+
+        function addStudent() {
+      // Pobieranie danych wprowadzonych przez użytkownika
+      var name = document.getElementById('name').value;
+      var surname = document.getElementById('surname').value;
+      var age = document.getElementById('age').value;
+
+      // Tworzenie obiektu Student za pomocą funkcji
+      var student = {
+        imie: name,
+        nazwisko: surname,
+        wiek: age
+      };
+
+      // Wyświetlanie danych w odpowiednich elementach HTML
+      var studentDataElement = document.getElementById('studentData');
+      studentDataElement.innerHTML = '';
+      studentDataElement.innerHTML += 'Imię: ' + student.imie + '<br>';
+      studentDataElement.innerHTML += 'Nazwisko: ' + student.nazwisko + '<br>';
+      studentDataElement.innerHTML += 'Wiek: ' + student.wiek + '<br>';
+        }
+
+        //Zadanie 8
+
+        function showTime() {
+      var date = new Date();
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      
+      var timeString = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+      
+      document.getElementById("clock").textContent = timeString;
+    }
+    
+    function formatTime(time) {
+      return time < 10 ? "0" + time : time;
+    }
+    
+    setInterval(showTime, 1000);
+    </script>
+</body>
+</html>
