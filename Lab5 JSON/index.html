@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorium 5 JSON</title>
+</head>
+<body>
+    <h1>Tabliczka mnożenia</h1>
+    <br>
+    <h1>Generowanie losowych danych osobowych</h1>
+  <label for="count">Ilość rekordów do wygenerowania:</label>
+  <input type="number" id="count" value="20">
+  <button onclick="generateAndDisplayData()">Generuj</button>
+  <pre id="result"></pre>
+    <script>
+        //Zadanie 1
+         document.write('<table>');
+
+    for (var i = 1; i <= 10; i++) {
+    document.write('<tr>');
+    for (var j = 1; j <= 10; j++) {
+    document.write('<td>' + (i * j) + '</td>');
+  }
+  document.write('</tr>');
+}
+
+document.write('</table>');
+
+    //Zadanie 2
+
+    // Tablice z pulą imion i nazwisk
+var names = ["Jan", "Anna", "Tomasz", "Maria", "Piotr", "Katarzyna", "Marcelina", "Konstancja", "Andzrej", "Paweł", "Julia"];
+var surnames = ["Kowalski", "Nowak", "Wiśniewski", "Wójcik", "Kowalczyk", "Lewandowska", "Hulak", "Dąbrowski", "Duda","Kornaga"];
+
+// Funkcja generująca losową liczbę z przedziału
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Funkcja generująca losowe dane osobowe
+function generateRandomData(count) {
+  var data = [];
+  
+  for (var i = 0; i < count; i++) {
+    var name = names[getRandomNumber(0, names.length - 1)];
+    var surname = surnames[getRandomNumber(0, surnames.length - 1)];
+    var age = getRandomNumber(18, 80);
+    var phone = getRandomNumber(5000000, 8000000);
+    
+    var person = {
+      "name": name,
+      "surname": surname,
+      "age": age,
+      "phone": phone
+    };
+    
+    data.push(person);
+  }
+  
+  return data;
+}
+
+// Przykładowe użycie funkcji i wypisanie wyniku w konsoli
+//var count = 20; // Ilość rekordów
+//var result = generateRandomData(count);
+//console.log(JSON.stringify(result));
+
+// Funkcja obsługująca przycisk za pomocą którego użytkownik podaje ilośc rekordów
+    function generateAndDisplayData() {
+      var countInput = document.getElementById("count");
+      var count = parseInt(countInput.value, 10);
+      
+      if (isNaN(count)) {
+        alert("Podana wartość nie jest liczbą.");
+        return;
+      }
+      
+      if (count <= 0) {
+        alert("Podana wartość musi być większa od zera.");
+        return;
+      }
+
+      var data = generateRandomData(count);
+      var resultElement = document.getElementById("result");
+      resultElement.textContent = JSON.stringify(data);
+      console.log(JSON.stringify(result));
+    }
+    </script>
+</body>
+</html>
